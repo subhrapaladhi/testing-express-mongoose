@@ -2,16 +2,23 @@
 
 const   express     = require('express'),
         app         = express(),
-        mongoose    = require('mongoose'),
         bodyParser  = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect("mongodb://localhost:27017/studentList",{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-mongoose.connection
-        .once('open', ()=>console.log("connected to database"))
-        .on('error', (err)=>console.log(err))
+const mongooseConnect = require('./helpers/dbConnect');
+mongooseConnect.dbconnect()
+                .then(()=>{
+                    console.log("connected to db")
+                })
+                .catch(()=>{
+                    console.log("connection to db failed")
+                })
+// mongoose.connect("mongodb://localhost:27017/studentList",{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+// mongoose.connection
+//         .once('open', ()=>console.log("connected to database"))
+//         .on('error', (err)=>console.log(err))
 
 const Student = require('./models/student')
 
@@ -93,4 +100,6 @@ app.delete('/:id', (req, res)=>{
             })
 })
 
-module.exports = app.listen(3000, ()=>console.log("server started at port 3000"))
+app.listen(3000, ()=>console.log("server started at port 3000"))
+
+module.exports = app;
