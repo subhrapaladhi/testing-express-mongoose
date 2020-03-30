@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --recursive --exit --timeout 10000"
+    "test": "mocha --recursive --exit --timeout 10000",
+    "coverage": "istanbul cover _mocha ",
+    "showcoverage": "xdg-open coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
