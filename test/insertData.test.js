@@ -8,7 +8,7 @@ describe('POST: /save route to insert data', ()=>{
     
     basicSetup();
 
-    it('inserting a student detail with valid data', (done)=>{
+    it('valid data', (done)=>{
         let toSendData = {_id: 1, name:'john doe', branch: 'computer science'} 
         request(app).post('/save')
             .send(toSendData)
@@ -20,7 +20,7 @@ describe('POST: /save route to insert data', ()=>{
             .catch((err) => done(err))
     })
 
-    it('inserting a student without _id field', (done)=>{
+    it('no _id field given', (done)=>{
         request(app).post('/save')
             .send({name:'john doe', branch: 'computer science'})
             .then((res)=>{

@@ -12,11 +12,11 @@ describe('GET: /:id route to get data', () => {
         insertedData = {_id: 1, name:'john doe', branch: 'computer science'}
         new Student(insertedData)
                 .save()
-                .then((data) => done())
+                .then(() => done())
                 .catch((err) => done(err))
     })
     
-    it('reading data for a valid student id', (done) => {
+    it('existing data', (done) => {
         request(app).get('/1')
                 .then((res)=>{
                     expect(res.statusCode).to.equal(200);
@@ -26,10 +26,20 @@ describe('GET: /:id route to get data', () => {
                 .catch((err) => done(err))
     })
 
-    it('reading data for a invalid student id', (done) => {
+    it('non existent data', (done) => {
         request(app).get('/2')
                 .then((res) => {
                     expect(res.statusCode).to.equal(404);
+                    expect(res.body).to.deep.equal({err:"data not found"});
+                    done()
+                })
+                .catch((err) => done(err))
+    })
+
+    it('invalid id', (done) => {
+        request(app).get('/string')
+                .then((res) => {
+                    expect(res.statusCode).to.equal(500);
                     done()
                 })
                 .catch((err) => done(err))

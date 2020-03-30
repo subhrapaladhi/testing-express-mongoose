@@ -62,6 +62,6 @@ app.delete('/:id', (req, res)=>{
             .catch((err) => res.status(500).send(err))
 })
 
-app.listen(5000, () => console.log("server started at port 3000"))
+app.listen(3000, () => console.log("server started at port 3000"))
 
 module.exports = app;
