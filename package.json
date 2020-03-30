@@ -9,14 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/subhrapaladhi/unit-testing-express-mongo.git"
+    "url": "git+https://github.com/subhrapaladhi/unit-testing-express-mongoose.git"
+    
   },
   "author": "subhrapaladhi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/subhrapaladhi/unit-testing-express-mongo/issues"
+    "url": "https://github.com/subhrapaladhi/unit-testing-express-mongoose.git/issues"
   },
-  "homepage": "https://github.com/subhrapaladhi/unit-testing-express-mongo#readme",
+  "homepage": "https://github.com/subhrapaladhi/unit-testing-express-mongoose#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
