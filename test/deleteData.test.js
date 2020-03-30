@@ -4,10 +4,9 @@ const   expect      = require('chai').expect;
         app         = require('../app'),
         Student     = require('../models/student');
 
-describe('GET: /:id route to get data', () => {
-    
-    let insertedData = {_id: 1, name:'john doe', branch: 'computer science'}
+describe('DELETE: /:id route to delete data', () => {
     basicSetup();
+    let insertedData = {_id: 1, name:'john doe', branch: 'computer science'}
     beforeEach((done) =>{
         new Student(insertedData)
                 .save()
@@ -16,7 +15,7 @@ describe('GET: /:id route to get data', () => {
     })
     
     it('existing data', (done) => {
-        request(app).get('/1')
+        request(app).delete('/1')
                 .then((res)=>{
                     expect(res.statusCode).to.equal(200);
                     expect(res.body).to.include(insertedData)
@@ -26,7 +25,7 @@ describe('GET: /:id route to get data', () => {
     })
 
     it('non existent data', (done) => {
-        request(app).get('/2')
+        request(app).delete('/2')
                 .then((res) => {
                     expect(res.statusCode).to.equal(404);
                     expect(res.body).to.deep.equal({err:"data not found"});
@@ -36,7 +35,7 @@ describe('GET: /:id route to get data', () => {
     })
 
     it('invalid id', (done) => {
-        request(app).get('/string')
+        request(app).delete('/string')
                 .then((res) => {
                     expect(res.statusCode).to.equal(500);
                     done()

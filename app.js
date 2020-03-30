@@ -56,7 +56,7 @@ app.delete('/:id', (req, res)=>{
                 if(data){
                     res.status(200).send(data)
                 }else{
-                    res.status(400).send({err: "data not found"})
+                    res.status(404).send({err: "data not found"})
                 }
             })
             .catch((err) => res.status(500).send(err))
