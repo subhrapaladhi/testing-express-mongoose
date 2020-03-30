@@ -1,15 +1,15 @@
-const expect = require('chai').expect;
-const request = require('supertest');
+const   expect      = require('chai').expect;
+        request     = require('supertest');
+        basicSetup  = require('./helper/basicSetup')
+        app         = require('../app');
 
-const app = require('../app');
 
-let basicSetup = require('./helper/basicSetup')
-describe('/save route to insert data', ()=>{
+describe('POST: /save route to insert data', ()=>{
     
     basicSetup();
 
     it('inserting a student detail with valid data', (done)=>{
-        let toSendData = {_id: 14, name:'john doe', branch: 'computer science'} 
+        let toSendData = {_id: 1, name:'john doe', branch: 'computer science'} 
         request(app).post('/save')
             .send(toSendData)
             .then((res)=>{
