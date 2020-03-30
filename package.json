@@ -1,5 +1,5 @@
 {
-  "name": "unit-testing-express-mongo",
+  "name": "unit-testing-express-mongoose",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
