@@ -1,6 +1,6 @@
-const   expect      = require('chai').expect;
-        request     = require('supertest');
-        basicSetup  = require('./helper/basicSetup')
+const   expect      = require('chai').expect,
+        request     = require('supertest'),
+        basicSetup  = require('./helper/basicSetup'),
         app         = require('../app');
 
 
