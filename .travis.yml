@@ -1,0 +1,17 @@
+language: node_js
+node:js: 
+    - "12.16.2"
+dist: trusty
+services:
+    - mongodb
+env: 
+    - NODE_env=ci PORT=3000
+cache:
+    directories:
+        - node_modules
+install:
+    - npm install
+script:
+    - nohup npm run start &
+    - sleep 10
+    - npm run test

@@ -1,8 +1,10 @@
 /* READ - GET ; CREATE - POST ; UPDATE - PUT ; DELETE - DELETE */
-
+process.env.NODE_ENV = 'dev'
 const   express     = require('express'),
         app         = express(),
-        bodyParser  = require('body-parser');
+        bodyParser  = require('body-parser'),
+        keys        = require('./keys'),
+        PORT        = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -62,6 +64,6 @@ app.delete('/:id', (req, res)=>{
             .catch((err) => res.status(500).send(err))
 })
 
-app.listen(3000, () => console.log("server started at port 3000"))
+app.listen(PORT, () => console.log(`server started at port ${PORT}`))
 
 module.exports = app;
